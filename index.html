@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Be My Valentine 💘</title>
+
+<style>
+    body {
+        margin: 0;
+        height: 100vh;
+        background: linear-gradient(135deg, pink, hotpink);
+        overflow: hidden;
+        font-family: Arial, sans-serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .box {
+        background: white;
+        padding: 30px;
+        border-radius: 20px;
+        text-align: center;
+        box-shadow: 0 15px 30px rgba(0,0,0,0.3);
+        z-index: 10;
+        max-width: 90%;
+    }
+
+    h1 {
+        color: #e91e63;
+    }
+
+    button {
+        padding: 12px 28px;
+        font-size: 18px;
+        border-radius: 25px;
+        border: none;
+        cursor: pointer;
+        margin: 10px;
+    }
+
+    #yes {
+        background: #e91e63;
+        color: white;
+    }
+
+    #no {
+        background: #ccc;
+        position: absolute;
+    }
+
+    img {
+        width: 180px;
+        border-radius: 15px;
+        margin: 10px;
+    }
+
+    /* Floating hearts */
+    .heart {
+        position: absolute;
+        bottom: -20px;
+        font-size: 20px;
+        animation: float 6s linear infinite;
+        color: red;
+        z-index: 1;
+    }
+
+    @keyframes float {
+        from { transform: translateY(0); opacity: 1; }
+        to { transform: translateY(-110vh); opacity: 0; }
+    }
+</style>
+</head>
+
+<body>
+
+<!-- Background Music -->
+<audio id="music" src="music.mp3" loop></audio>
+
+<div class="box" id="content">
+    <h1>Will you be my Valentine? 💖</h1>
+    <button id="yes" onclick="yesClicked()">YES ❤️</button>
+    <button id="no" onclick="changeNo()" onmouseover="moveNo()">NO 💔</button>
+</div>
+
+<script>
+    const noTexts = [
+        "Are you sure? 😢",
+        "Think again 💕",
+        "My heart says yes 💘",
+        "Don't break my heart 🥹",
+        "I love you 💖",
+        "You're my forever 😍"
+    ];
+
+    let index = 0;
+
+    function changeNo() {
+        document.getElementById("no").innerText = noTexts[index];
+        index = (index + 1) % noTexts.length;
+    }
+
+    function moveNo() {
+        const noBtn = document.getElementById("no");
+        const x = Math.random() * (window.innerWidth - 120);
+        const y = Math.random() * (window.innerHeight - 60);
+        noBtn.style.left = x + "px";
+        noBtn.style.top = y + "px";
+    }
+
+    function yesClicked() {
+        document.getElementById("music").play();
+
+        const link = "https://yourusername.github.io/valentine/";
+        const message = "I made this just for you ❤️💝 Open it here 👉 " + link;
+
+        document.getElementById("content").innerHTML = `
+            <h1>I knew it! 😍💞</h1>
+            <p>You just made my heart so happy 💖</p>
+            <img src="Screenshot_20251218_223604_Gallery.jpg" alt="Valentine's Image"> 
+            <br>MY heart is yours 💘</p>
+            <p>Dumar kle ma eegayo qaaliyey
+                wx thy qrx bdn aa nan qeybsamin iyo nasiib an 
+                lawada helin karin baad tahay 💖 🫀👸👸🫵 </p>
+                           ZEYTUUNEY<br>
+
+            <a href="https://wa.me/?text=${encodeURIComponent(message)}" target="_blank">
+                <button style="background:#25D366;color:white;">
+                    Share on WhatsApp 💬
+                </button>
+            </a>
+        `;
+    }
+
+    /* Floating hearts generator */
+    setInterval(() => {
+        const heart = document.createElement("div");
+        heart.className = "heart";
+        heart.innerHTML = "❤️";
+        heart.style.left = Math.random() * 100 + "vw";
+        heart.style.fontSize = Math.random() * 20 + 15 + "px";
+        document.body.appendChild(heart);
+
+        setTimeout(() => heart.remove(), 6000);
+    }, 300);
+</script>
+
+</body>
+</html>
