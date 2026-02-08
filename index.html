@@ -11,19 +11,20 @@
         background: linear-gradient(135deg, pink, hotpink);
         overflow: hidden;
         font-family: Arial, sans-serif;
+            front-size: 50px;
         display: flex;
         justify-content: center;
         align-items: center;
     }
 
     .box {
-        background: white;
+        background: black;
         padding: 30px;
         border-radius: 20px;
         text-align: center;
         box-shadow: 0 15px 30px rgba(0,0,0,0.3);
-        z-index: 10;
-        max-width: 90%;
+        z-index: 20;
+        max-width: 100%;
     }
 
     h1 {
@@ -62,7 +63,7 @@
         font-size: 20px;
         animation: float 6s linear infinite;
         color: red;
-        z-index: 1;
+        z-index: 12;
     }
 
     @keyframes float {
@@ -111,7 +112,7 @@
     function yesClicked() {
         document.getElementById("music").play();
 
-        const link = "https://yourusername.github.io/valentine/";
+        const link = "https://abdirahman-bitu.github.io/zey-love/";
         const message = "I made this just for you ❤️💝 Open it here 👉 " + link;
 
         document.getElementById("content").innerHTML = `
@@ -142,4 +143,5 @@
 </body>
 
 </html>
+
 
